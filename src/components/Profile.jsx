@@ -4,8 +4,8 @@ export default function Profile() {
   return (
     <View className = " mt-10 px-4 flex flex-row justify-between items-center">
       <View>
-        <Text>HI FANDi</Text>
-        <Text>200 okelist</Text>
+        <Text className="font-extrabold text-2xl" >HI FANDi</Text>
+        <Text className=" text-colorPrimary" >200 list</Text>
       </View>
       <View>
         <Image

@@ -10,7 +10,7 @@ import List_todo from '../screens/List_todo';
 const Tab = createBottomTabNavigator();
 export default function MyTab() {
   return (
-    <Tab.Navigator initialRouteName="Todo"
+    <Tab.Navigator initialRouteName="List"
     screenOptions={({route})=>({
       headerShown:false,
 

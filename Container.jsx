@@ -7,15 +7,14 @@ import Home from "./src/screens/Landing";
 import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import MyTab from "./src/components/Tabs";
-import Detail_list from "./src/screens/Detail_list";
-
+import Detail_list from './src/screens/Detail_list'
 const Stack = createStackNavigator();
 
 export default function Container() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Tabs">
-      {/* <Stack.Navigator> */}
+        {/* <Stack.Navigator> */}
         <Stack.Screen
           name="Main"
           component={Home}
@@ -36,7 +35,11 @@ export default function Container() {
           component={MyTab}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Detail List" component={Detail_list} />
+        <Stack.Screen
+          name="Detail List"
+          component={Detail_list}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

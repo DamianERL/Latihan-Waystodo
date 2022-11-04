@@ -1060,6 +1060,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@dietime/react-native-date-picker@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@dietime/react-native-date-picker/-/react-native-date-picker-1.2.0.tgz#a41821718b9243532d7248c0a621b37429d0939d"
+  integrity sha512-hFd1OUlVeJLpRZ//B99mfB4G8UYGpXOIL1KNG3SNByLS7o5gEtnlXp6Pk7B4/mz2an6t+T6UBaF4tqye0tBzdw==
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -3193,6 +3198,11 @@ expo-keep-awake@~10.2.0:
   version "10.2.0"
   resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.2.0.tgz"
   integrity sha512-kIRtO4Hmrvxh4E45IPWG/NiUZsuRe1AQwBT09pq+kx8nm6tUS4B9TeL6+1NFy+qVBLbGKDqoQD5Ez7XYTFtBeQ==
+
+expo-linear-gradient@^11.4.0:
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-11.4.0.tgz#20ecad4d11e66e35b31600e5389ec9c4067f7312"
+  integrity sha512-qtIfsLs7NOpfxYrFSJL5uLtNHIkBHQFuQ3f7++XpoJTSm4eQVFxjjkCGWiLIrkpVjKzmgp3DLuIVsadsGX21lA==
 
 expo-modules-autolinking@0.10.3:
   version "0.10.3"
@@ -5652,6 +5662,11 @@ react-native-codegen@^0.69.2:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-dropdown-select-list@^1.0.23:
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-select-list/-/react-native-dropdown-select-list-1.0.23.tgz#63dbaf0a9808514b9151c14a6f3df12ae509ca7d"
+  integrity sha512-P4/GsqVv2EEUUJXyJyMwdDYKAT7qcsD6aXu0BjkM/5VmQGRLhRiLs7wfPW12Tva+AyX6URfw7pTsupJM3/oh/g==
 
 react-native-gesture-handler@~2.5.0:
   version "2.5.0"

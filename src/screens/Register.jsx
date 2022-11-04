@@ -7,7 +7,7 @@ import Axios from "axios";
 export default function Register({ navigation }) {
   const [form, setForm] = React.useState();
 
-  console.log("form", form);
+  // console.log("form", form);
 
   const [isLoading, setLoading] = React.useState(false);
 
@@ -28,13 +28,13 @@ export default function Register({ navigation }) {
       }
 
       const body = JSON.stringify(form);
-      console.log("oke",body)
+      // console.log("oke",body)
 
       const res = await Axios.post(
         "https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/auth/register",
         body,config
       );
-      console.log("res", res);
+      // console.log("res", res);
 
       if (res) {
         await AsyncStorage.setItem("token", res.data.token);
@@ -42,7 +42,7 @@ export default function Register({ navigation }) {
 
       const value = await AsyncStorage.getItem("token");
       if (value !== null) {
-        console.log(value);
+        // console.log(value);
         navigation.navigate("Login");
       }
     } catch (error) {

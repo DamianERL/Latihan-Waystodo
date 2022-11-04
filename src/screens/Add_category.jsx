@@ -6,8 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect } from "react";
-import Input from "../components/atoms/Input";
-import Button from "../components/atoms/Button";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
@@ -15,7 +14,6 @@ export default function Add_category({ navigation }) {
   const [data, setData] = React.useState("");
   const [form, setForm] = React.useState("");
 
-  console.log(",oke",form);
   const handleonchange = (item, value) => {
     setData({
       ...data,
@@ -44,7 +42,11 @@ export default function Add_category({ navigation }) {
         "https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/category",
         body,
         config
-      );
+      );   
+   
+      const respon = await axios.get("https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/category?$lookup=*");
+      // console.log("res get",res)
+      setForm(respon.data)
 
       // console.log("data post", res);
     } catch (error) {
@@ -52,22 +54,7 @@ export default function Add_category({ navigation }) {
     }
   };
 
-  const getDB = async () => {
-    try {
-
-      const res = await axios.get("https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/category?$lookup=*");
-      console.log("res get",res)
-      setForm(res.data)
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getDB();
-  }, []);
-
+  
   return (
     <View className="flex justify-center mt-12     items-center">
       <View>

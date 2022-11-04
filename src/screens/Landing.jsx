@@ -1,6 +1,5 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Buttons from "../components/atoms/Button";
 
 export default function Landing({navigation}) {
   // console.log("tes", props);
