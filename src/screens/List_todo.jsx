@@ -13,23 +13,22 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Profile from "../components/Profile";
 import Do from "../components/dummy";
 export default function List_todo({ navigation }) {
-  console.log(Do.length);
   return (
     <View>
       <Profile />
 
       <View className="mx-4 my-2 mt-2">
-      <TextInput
-            placeholder=""
-            className="  h-16 pl-4   rounded-md border-2 bg-gray-200 border-colorSecond   w-[360px] mb-8 "
-          />
+        <TextInput
+          placeholder=""
+          className="  h-16 pl-4   rounded-md border-2 bg-gray-200 border-colorSecond   w-[360px] mb-8 "
+        />
         <View className="flex flex-row ">
           <TextInput
             placeholder="choose date"
             className="  h-16 pl-4   rounded-md border-2 bg-gray-200 border-colorSecond  w-[120px] "
           />
           <TextInput
-          name="category"
+            name="category"
             placeholder="category"
             className="  h-16 pl-4   rounded-md border-2 bg-gray-200 border-colorSecond  w-[110px] mx-2 "
           />
@@ -60,7 +59,7 @@ export default function List_todo({ navigation }) {
                 </View>
               </Pressable>
               <View className="w-[100px] flex items-end">
-                <Text className="flex justify-center bg-blue-300 rounded-md p-[8px]">
+                <Text className="flex justify-center text-white bg-blue-300 rounded-md py-[4px] px-[8px]">
                   {item.category}
                 </Text>
                 <Ionicons name="md-checkmark-circle" size={40} color="green" />

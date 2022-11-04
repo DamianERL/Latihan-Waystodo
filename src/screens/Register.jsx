@@ -28,7 +28,6 @@ export default function Register({ navigation }) {
       }
 
       const body = JSON.stringify(form);
-      // console.log("oke",body)
 
       const res = await Axios.post(
         "https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/auth/register",

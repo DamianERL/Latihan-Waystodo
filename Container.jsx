@@ -13,8 +13,8 @@ const Stack = createStackNavigator();
 export default function Container() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Tabs">
-        {/* <Stack.Navigator> */}
+      {/* <Stack.Navigator initialRouteName="Tabs"> */}
+        <Stack.Navigator>
         <Stack.Screen
           name="Main"
           component={Home}
