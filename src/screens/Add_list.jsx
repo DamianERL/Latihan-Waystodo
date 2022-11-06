@@ -6,19 +6,21 @@ import {
   Modal,
   Pressable,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectList from "react-native-dropdown-select-list";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Date from "../components/modal/Date";
 import Axios from "axios";
+import axios from "axios";
+import moment from "moment";
 
 export default function Add_list({ navigation }) {
-  const [date, setDate] = useState("");
+  const [dates, setDate] = useState("");
   const [showModal, setShowModal] = useState(false);
+
   const [selected, setSelected] = useState("");
-  const [data, setDAte] = useState("");
   const [form, setForm] = useState("");
-  console.log(form);
+
   const handleOnChange = (item, value) => {
     setForm({
       ...form,
@@ -35,12 +37,12 @@ export default function Add_list({ navigation }) {
 
       const body = {
         todo: form.name,
-        Date: date.toJSON().slice(0, 10),
-        // categories:selected,
+        Date: moment(dates).format("YYYY-M-DD"),
         desc: form.description,
+        category: selected,
       };
-
-      const res = await Axios.post("", body, config);
+      console.log("oke",body);
+      const res = await Axios.post("https://api.v2.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/waystodo", body, config);
       console.log("res", res);
 
       if (res) {
@@ -57,6 +59,23 @@ export default function Add_list({ navigation }) {
     }
   };
 
+  // categories
+  const [data,setData]=useState([])
+
+  const handledata = async () => {
+    try {
+      const respon = await axios.get("https://api.v2.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/categories?$lookup=*");
+      setData(respon.data)
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    handledata()
+  },[setData])
+
   return (
     <View className="  flex items-center justify-center ">
       <View className="">
@@ -68,6 +87,7 @@ export default function Add_list({ navigation }) {
           placeholder="Name"
           className="h-16 pl-6  w-[360px] mb-2  rounded-md border-2 bg-gray-200 border-colorSecond "
         />
+
         <SelectList
           data={data}
           setSelected={setSelected}
@@ -87,7 +107,7 @@ export default function Add_list({ navigation }) {
         <View className="flex-row justify-between">
           <Pressable className="h-12 mt-4 pl-6  w-[360px] mb-2  rounded-md border-2 bg-gray-200 border-colorSecond justify-center">
             <Text onPress={() => setShowModal(true)}>
-              {date ? date.toJSON().slice(0, 10) : "date"}
+              {dates ? moment(dates).format("YYYY-M-DD") : "date"}
             </Text>
           </Pressable>
         </View>
@@ -101,7 +121,7 @@ export default function Add_list({ navigation }) {
           }}
         >
           <View className="bg-white w-[360px] rounded-lg h-80 p-2 z-50 ml-4 mt-28 ">
-            <Date date={date} setDate={setDate} />
+            <Date date={dates} setDate={setDate} />
             <View>
               <Pressable
                 className=" p-4 w-20 rounded-md h-12 items-center bg-colorSecond"

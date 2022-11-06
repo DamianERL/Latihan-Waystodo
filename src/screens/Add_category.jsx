@@ -11,13 +11,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 export default function Add_category({ navigation }) {
-  const [data, setData] = React.useState("");
+  const [data, setData] = React.useState([]);
   const [form, setForm] = React.useState("");
 
-  const handleonchange = (item, value) => {
+  const handleonchange = (item, values) => {
     setData({
       ...data,
-      [item]: value,
+      [item]: values,
     });
   };
   // console.log(data);
@@ -39,12 +39,12 @@ export default function Add_category({ navigation }) {
       // console.log("data body", body);
 
       const res = await axios.post(
-        "https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/category",
+        "https://api.v2.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/categories",
         body,
         config
       );   
    
-      const respon = await axios.get("https://api.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/category?$lookup=*");
+      const respon = await axios.get("https://api.v2.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/categories");
       // console.log("res get",res)
       setForm(respon.data)
 
@@ -54,7 +54,21 @@ export default function Add_category({ navigation }) {
     }
   };
 
+  const handledata = async () => {
+    try {
+      const respon = await axios.get("https://api.v2.kontenbase.com/query/api/v1/55677367-a1c6-49d1-9175-2f639667eab1/categories?$lookup=*");
+      setForm(respon.data)
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    handledata()
+  },[])
   
+
   return (
     <View className="flex justify-center mt-12     items-center">
       <View>
@@ -64,9 +78,9 @@ export default function Add_category({ navigation }) {
         <TextInput
           value={data}
           placeholder="Add category . . ."
-          name="category"
+          name="value"
           className="h-16 pl-4  w-[360px] mb-8  rounded-md border-2 bg-gray-200 border-colorSecond"
-          onChangeText={(value) => handleonchange("category", value)}
+          onChangeText={(values) => handleonchange("value", values)}
         />
         <TouchableOpacity
           onPress={handleCategory}
@@ -81,7 +95,7 @@ export default function Add_category({ navigation }) {
           key={(item) => item.index}
           renderItem={({ item }) => (
             <Text className=" text-sm bg-slate-600 p-2 rounded-2xl m-2">
-              {item.category}
+              {item.value}
             </Text>
           )}
         />
